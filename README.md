@@ -1,2 +1,2 @@
-# HiC-GNN: Generalizable 3D Chromosome Structure Reconstruction from Hi-C data Using Graph Neural Network
-Generalizable 3D Chromosome Structure Reconstruction from Hi-C data Using Graph Neural Network
+# HiC-GNN: A Generalizable Model for 3DChromosome Reconstruction Using GraphConvolutional Neural Networks
+A Generalizable Model for 3DChromosome Reconstruction Using GraphConvolutional Neural Networks
