@@ -13,9 +13,12 @@ if __name__=="__main__":
     parser.add_argument('filepath', type=str, help='Input text file path. The file should be either a tab-delimeted interaction frequency matrix, or a  tab-delimeted\
         coordinate list of the form [position1, position2, interaction_frequency].')
     parser.add_argument('-bs', '--batchsize',  type=int, default=128, help='Batch size for embeddings generation.')
+    parser.add_argument('-ep', '--epochs', type=int, default=10, help='Number of epochs used for embeddings generation')
+
     args = parser.parse_args()
     filepath = args.filepath
     batch_size = args.batchsize
+    epochs = args.epochs
     adj = np.loadtxt(filepath)
 
     if adj.shape[1] == 3:
@@ -26,10 +29,11 @@ if __name__=="__main__":
     G = nx.from_numpy_matrix(adj)
 
     embed = LINE(G,embedding_size=512,order='second')
-    embed.train(batch_size=batch_size,epochs=10,verbose=1)
+    embed.train(batch_size=batch_size,epochs=epochs,verbose=1)
     embeddings = embed.get_embeddings()
     embeddings = list(embeddings.values())
     embeddings = np.asarray(embeddings)
 
     name = os.path.splitext(os.path.basename(filepath))[0]
     np.savetxt('Data/' + name + '_embeddings.txt', embeddings)
+    print('Created embeddings corresponding to ' + filepath + ' as Data/' + name + '_embeddings.txt')

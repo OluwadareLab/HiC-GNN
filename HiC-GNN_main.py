@@ -51,9 +51,10 @@ if __name__ == "__main__":
 
     name = os.path.splitext(os.path.basename(filepath))[0]
 
-    adj = np.loadtxt(filepath, delimiter='\t')
+    adj = np.loadtxt(filepath)
 
     if adj.shape[1] == 3:
+        print('Converting coordinate list format to matrix.')
         adj = utils.convert_to_matrix(adj)
 
     np.fill_diagonal(adj, 0)
