@@ -20,10 +20,10 @@
 ## **Description of HiC Data**:
 --------------------------------------------------------------------	
 ## **Build Instructions:**
-HiC-GNN runs in a Docker-containerized environment. Before cloning this repository and attempting to build, install [Docker desktop](https://www.docker.com/products/docker-desktop) and create a [Docker hub account](https://hub.docker.com/). To install and build HiC-GNN follow these steps.
+HiC-GNN runs in a Docker-containerized environment. Before cloning this repository and attempting to build, install the [Docker engine](https://docs.docker.com/engine/install/). To install and build HiC-GNN follow these steps.
 
 1. Clone this repository locally using the command ``git clone https://github.com/OluwadareLab/HiC-GNN.git && cd HiC-GNN``. 
-2. Pull the HiC-GNN docker image from docker hub using the command ``docker pull vhovenga/hicgnn_image:hicgnn``. This may take a few minutes. Once finished, check that the image was sucessfully pulled using ``docker image ls``.
+2. Pull the HiC-GNN docker image from docker hub using the command ``docker pull oluwadarelab/hicgnn:latest``. This may take a few minutes. Once finished, check that the image was sucessfully pulled using ``docker image ls``.
 3. Run the HiC-GNN container and mount the present working directory to the container using ``docker run --rm -it --name hicgnn_cont -v ${PWD}:/HiC-GNN vhovenga/hicgnn_image:hicgnn``. 
 
 --------------------------------------------------------------------	
