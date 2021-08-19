@@ -68,6 +68,63 @@ This script takes a single Hi-C contact map as an input and utilizes it to train
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loss threshold for training termination. Default value: 1e-8. <br />
     
 * **Example**: ```python HiC-GNN_main.py Data/GM12878_1mb_chr19_list.txt```
+
+### HiC-GNN_generalize.py
+This script takes in two Hi-C maps in coordinate list format. The script generates embeddings for the first input map and then trains a model using the map and the corresponding embeddings. The script then generates embeddings for the second input map and aligns these embeddings to those of the first input map and tests the model generated from the first input using these aligned embeddings. The output is a structure corresponding to the second input generalized from the model trained on the first input. The script searches for files corresponding to the raw matrix format, the normalized matrix format, the embeddings, and a trained model for the inputs in the current working directory. For example, if the input file is ```input.txt```, then the script checks if ```Data/input_matrix.txt```, ```Data/input_matrix_KR_normed.txt```, and ```Data/input_embeddings.txt``` exists. If these files do not exist, then the script generates them automatically.
+
+**Inputs**: 
+1. A Hi-C contact map in either matrix format or coordinate list format.
+
+**Outputs**: 
+1. A .pdb file of the predicted 3D structure corresponding to the second input file in ```Outputs/input_2_generalized_structure.pdb```.
+2. A .txt file depicting the optimal conversion value and the dSCC value of the output structure```Outputs/input_2_generalized_log.txt```.
+3. A .pt file of the trained model weights corresponding to the first input file in ```Outputs/input_1_weights.pt```.
+4. A .txt of the normalized Hi-C contact map corresponding to the KR normalization of both input files in ```Data/input_matrix_KR_normed.txt``` if these files don't exist already.
+5. A .txt file of the embeddings corresponding to the input files in ```Data/input_embeddings.txt``` if these files don't exist already. 
+6. A .txt file of the input files in matrix format in ```Data/input_matrix.txt``` if these files don't exist already.
+
+**Usage**: ```python HiC-GNN_generalize.py input_filepath1 input_filepath2```
+
+* **positional arguments**: <br />
+&nbsp;&nbsp;&nbsp;&nbsp;```input_filepath1```: Path of the input file with which a model will be trained and later generalized on ```input_filepath2```. <br />
+&nbsp;&nbsp;&nbsp;&nbsp;```input_filepath2```: Path of the input file with which a generalized structure corresponding to a model trained on ```input_filepath1``` will be generated. <br />
+
+* **optional arguments**: <br />	
+	&nbsp;&nbsp;&nbsp;&nbsp; Same as ```HiC-GNN_main.py```
+	
+* **Example**: ```python HiC-GNN_generalize.py Data/GM12878_1mb_chr19_list.txt Data/GM12878_500kb_chr19_list.txt```
+
+### HiC-GNN_main.py
+This script takes a single Hi-C contact map as an input and utilizes it to generate node embeddings. 
+
+**Inputs**: 
+1. A Hi-C contact map in either matrix format or coordinate list format.
+
+**Outputs**: 
+1. A .txt file of the embeddings corresponding to the input files in ```Data/input_embeddings.txt```.
+2. (In the case that the input file was in list format) A .txt file of the input file in matrix format in ```Data/input_filename_matrix.txt```.
+
+**Usage**: ```python HiC-GNN_generalize.py input_filepath```
+
+* **positional arguments**: <br />
+&nbsp;&nbsp;&nbsp;&nbsp;```input_filepath1```: Path of the input file with which a embeddings will be generated. <br />
+
+* **optional arguments**: <br />	
+	&nbsp;&nbsp;&nbsp;&nbsp;-h, --help  show this help message and exit<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;-bs, --batchsize <br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Batch size for embeddings generation. Default value: 128. <br />
+	&nbsp;&nbsp;&nbsp;&nbsp;-ep, --epochs <br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number of epochs used for embeddings generation. Default value: 10. <br />	
+
+
+
+
+
+	
+	
+
+
+
     
     
  
