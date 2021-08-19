@@ -94,7 +94,7 @@ This script takes in two Hi-C maps in coordinate list format. The script generat
 	
 * **Example**: ```python HiC-GNN_generalize.py Data/GM12878_1mb_chr19_list.txt Data/GM12878_500kb_chr19_list.txt```
 
-### HiC-GNN_main.py
+### HiC-GNN_embed.py
 This script takes a single Hi-C contact map as an input and utilizes it to generate node embeddings. 
 
 **Inputs**: 
@@ -115,23 +115,5 @@ This script takes a single Hi-C contact map as an input and utilizes it to gener
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Batch size for embeddings generation. Default value: 128. <br />
 	&nbsp;&nbsp;&nbsp;&nbsp;-ep, --epochs <br />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number of epochs used for embeddings generation. Default value: 10. <br />	
-
-
-
-
-
-	
-	
-
-
-
-    
-    
- 
-
-
-
-
-
-
-
+		
+* **Example**: ```python HiC-GNN_embed.py Data/GM12878_1mb_chr19_list.txt```
