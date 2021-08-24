@@ -24,7 +24,7 @@ HiC-GNN runs in a Docker-containerized environment. Before cloning this reposito
 
 1. Clone this repository locally using the command ``git clone https://github.com/OluwadareLab/HiC-GNN.git && cd HiC-GNN``. 
 2. Pull the HiC-GNN docker image from docker hub using the command ``docker pull oluwadarelab/hicgnn:latest``. This may take a few minutes. Once finished, check that the image was sucessfully pulled using ``docker image ls``.
-3. Run the HiC-GNN container and mount the present working directory to the container using ``docker run --rm -it --name hicgnn_cont -v ${PWD}:/HiC-GNN vhovenga/hicgnn_image:hicgnn``. 
+3. Run the HiC-GNN container and mount the present working directory to the container using ``docker run --rm -it --name hicgnn_cont -v ${PWD}:/HiC-GNN oluwadarelab/hicgnn_image:hicgnn``. 
 
 --------------------------------------------------------------------	
 ## **Content of Folders:**
